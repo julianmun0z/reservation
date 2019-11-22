@@ -25,7 +25,7 @@ pipeline {
                         gitTool:'Git_Centos',
                         submoduleCfg: [],
                         userRemoteConfigs: [[credentialsId:'GitHub_julianmun0z',
-                        url:'https://github.com/julianmun0z/RestauranApp.git']]])
+                        url:'https://github.com/julianmun0z/reservation.git']]])
            }  
        }
        stage('Unit Tests') {
