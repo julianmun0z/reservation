@@ -10,7 +10,7 @@ pipeline {
    }
 
 		 tools {
-       jdk 'JDK8_Centos'
+       jdk 'JDK 8u201'
 //       gradle 'Gradle4.5_Centos'
    }
    
