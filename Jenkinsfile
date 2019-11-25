@@ -8,12 +8,7 @@ pipeline {
        buildDiscarder(logRotator(numToKeepStr: '3'))
        disableConcurrentBuilds()
    }
-   
-   tools {
-       jdk 'JDK8_Centos'
-       gradle 'Gradle4.5_Centos'
-   }
-   
+
    stages{
        stage('Checkout') {
            steps{ 
@@ -71,5 +66,10 @@ pipeline {
 	 		body: "Something is wrongwith ${env.BUILD_URL}")
 	 		}
 		 }
+		 
+		 tools {
+       jdk 'JDK8_Centos'
+       gradle 'Gradle4.5_Centos'
+   }
 	       
   }
