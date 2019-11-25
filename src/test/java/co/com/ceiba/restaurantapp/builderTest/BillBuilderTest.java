@@ -118,7 +118,6 @@ public class BillBuilderTest {
 		when(billEntity.getPrice()).thenReturn(PRICE);
 		when(billEntity.getDiscountForPeople()).thenReturn(DISCOUNT_FOR_PEOPLE);
 		when(billEntity.getDiscpuntForDays()).thenReturn(DISCOUNT_FOR_DAY);
-		int expectedBillID = 2;
 		float expected = EXPECTED_PRICE;
 		int expectedDiscountPeople = DISCOUNT_FOR_PEOPLE;
 		int expectedDiscountDay = DISCOUNT_FOR_DAY;
