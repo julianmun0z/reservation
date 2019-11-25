@@ -10,7 +10,7 @@ pipeline {
    }
    
    tools {
-       jdk 'JDK8'
+       jdk "jdk8"
        gradle 'Gradle4.5'
    }
    
