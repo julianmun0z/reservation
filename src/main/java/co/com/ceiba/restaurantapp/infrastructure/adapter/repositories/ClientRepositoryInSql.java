@@ -13,7 +13,7 @@ import co.com.ceiba.restaurantapp.infrastructure.adapter.dao.ClientDao;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.entities.ClientEntity;
 
 @Service
-public class ClientRepositoryInMemory implements ClientRepository {
+public class ClientRepositoryInSql implements ClientRepository {
 
 	@Autowired
 	ClientDao clientDao;

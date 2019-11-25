@@ -13,7 +13,7 @@ import co.com.ceiba.restaurantapp.infrastructure.adapter.entities.ReservationEnt
 import co.com.ceiba.restaurantapp.infrastructure.adapter.dao.ReservationDao;
 
 @Service
-public class ReservationRepositoryInMemory implements ReservationRepository {
+public class ReservationRepositoryInSql implements ReservationRepository {
 
 	@Autowired
 	ReservationDao reservationDao;

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import co.com.ceiba.restaurantapp.domain.model.Reservation;
 import co.com.ceiba.restaurantapp.domain.repositories.ReservationRequestRepository;
+import co.com.ceiba.restaurantapp.domain.services.ReservationRequestService;
 import co.com.ceiba.restaurantapp.aplicacion.dto.ReservationRequest;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.builders.BillBuilder;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.builders.ReservationBuilder;
@@ -16,8 +17,12 @@ import co.com.ceiba.restaurantapp.infrastructure.adapter.entities.ReservationEnt
 import co.com.ceiba.restaurantapp.infrastructure.adapter.dao.ReservationDao;
 
 @Service
-public class ReservationRequestRepositoryInMemory implements ReservationRequestRepository {
+public class ReservationRequestRepositoryInSql implements ReservationRequestRepository {
 
+	
+	@Autowired
+	ReservationRequestService reservationRequestService;
+	
 	@Autowired
 	ReservationResquestBuilder reservationResquestBuilder;
 
@@ -25,13 +30,13 @@ public class ReservationRequestRepositoryInMemory implements ReservationRequestR
 	ReservationBuilder reservationBuilder;
 
 	@Autowired
-	ReservationRepositoryInMemory reservationRepositoryInMemory;
+	ReservationRepositoryInSql reservationRepositoryInMemory;
 
 	@Autowired
-	BillRepositoryInMemory billRepositoryInMemory;
+	BillRepositoryInSql billRepositoryInMemory;
 
 	@Autowired
-	ClientRepositoryInMemory clientRepositoryInMemory;
+	ClientRepositoryInSql clientRepositoryInMemory;
 
 	@Autowired
 	ReservationDao reservationDao;
@@ -58,7 +63,7 @@ public class ReservationRequestRepositoryInMemory implements ReservationRequestR
 
 	@Override
 	public void addReservationRequest(ReservationRequest reservationRequest) {
-		Reservation reservation = reservationResquestBuilder.divisionReservationRequest(reservationRequest);
+		Reservation reservation = reservationRequestService.createReservation(reservationRequest);
 		reservationRepositoryInMemory.addReservation(reservation);
 
 	}
@@ -74,7 +79,7 @@ public class ReservationRequestRepositoryInMemory implements ReservationRequestR
 
 	@Override
 	public void editReservationRequest(ReservationRequest reservationRequest) {
-		Reservation reservation = reservationResquestBuilder.divisionReservationRequest(reservationRequest);
+		Reservation reservation = reservationRequestService.createReservation(reservationRequest);
 		ReservationEntity reservationEntity = reservationBuilder.convertReservationToReservationEntity(reservation);
 		reservationDao.save(reservationEntity);
 	}

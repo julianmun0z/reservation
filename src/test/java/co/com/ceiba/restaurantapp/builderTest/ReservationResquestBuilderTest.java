@@ -16,6 +16,7 @@ import co.com.ceiba.restaurantapp.aplicacion.dto.ReservationRequest;
 import co.com.ceiba.restaurantapp.domain.model.Bill;
 import co.com.ceiba.restaurantapp.domain.model.Client;
 import co.com.ceiba.restaurantapp.domain.model.Reservation;
+import co.com.ceiba.restaurantapp.domain.services.ReservationRequestService;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.builders.ReservationResquestBuilder;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.entities.ReservationEntity;
 
@@ -50,6 +51,9 @@ public class ReservationResquestBuilderTest {
 
 	@InjectMocks
 	private ReservationResquestBuilder reservationResquestBuilder;
+	
+	@InjectMocks
+	private ReservationRequestService  reservationRequestService;
 
 	@Before
 	public void setUp() {
@@ -80,7 +84,7 @@ public class ReservationResquestBuilderTest {
 		boolean expedtedDecor = DECOR;
 		// act
 
-		Reservation result = reservationResquestBuilder.divisionReservationRequest(reservationRequest);
+		Reservation result = reservationRequestService.createReservation(reservationRequest);
 
 		// assert
 		assertEquals(expectedFisrtName, result.getClient().getFirstName());

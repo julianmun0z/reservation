@@ -9,19 +9,25 @@ import org.springframework.stereotype.Service;
 
 import co.com.ceiba.restaurantapp.aplicacion.dto.ReservationRequest;
 import co.com.ceiba.restaurantapp.domain.model.Bill;
+import co.com.ceiba.restaurantapp.domain.model.Reservation;
 import co.com.ceiba.restaurantapp.domain.repositories.BillRepository;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.builders.BillBuilder;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.builders.ReservationBuilder;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.builders.ReservationResquestBuilder;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.dao.BillDao;
+import co.com.ceiba.restaurantapp.infrastructure.adapter.dao.ReservationDao;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.entities.BillEntity;
+import co.com.ceiba.restaurantapp.infrastructure.adapter.entities.ReservationEntity;
 
 @Service
-public class BillRepositoryInMemory implements BillRepository {
+public class BillRepositoryInSql implements BillRepository {
 
 	@Autowired
 	BillDao billDao;
 
+	@Autowired
+	ReservationDao reservationDao;
+	
 	@Autowired
 	BillBuilder billBuilder;
 
@@ -47,7 +53,8 @@ public class BillRepositoryInMemory implements BillRepository {
 	@Override
 	public Bill getBillById(int id) {
 		BillEntity billEntity = billDao.findById(id);
-		Bill bill = billBuilder.convertBillEntityToBill(billEntity);
+		ReservationEntity reservationEntity = reservationDao.findById(id);
+ 		Bill bill = billBuilder.convertBillEntityToBillWhit(billEntity,reservationEntity);
 		return bill;
 	}
 

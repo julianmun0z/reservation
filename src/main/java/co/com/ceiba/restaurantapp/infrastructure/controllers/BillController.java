@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.com.ceiba.restaurantapp.domain.model.Bill;
-import co.com.ceiba.restaurantapp.infrastructure.adapter.repositories.BillRepositoryInMemory;
+import co.com.ceiba.restaurantapp.infrastructure.adapter.repositories.BillRepositoryInSql;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
@@ -19,7 +19,7 @@ public class BillController {
 
 	
 	@Autowired
-	BillRepositoryInMemory reservationRepositoryPersistent;
+	BillRepositoryInSql reservationRepositoryPersistent;
 
 	@GetMapping
 	public List<Bill> getReservation() {

@@ -30,6 +30,8 @@ public class BillTest {
 	private static final float VALUE_PER_PEOPLE = 200000;
 
 	private static final int NUMBER_PEOPLE_MORE_FIVE = 6;
+	private static final int NUMBER_PEOPLE_LESS_FIVE = 4;
+	private static final Calendar RESERVATION_NULL = null;
 
 	private static final int DELTA = 0;
 
@@ -59,7 +61,7 @@ public class BillTest {
 	private Client client;
 
 	@Mock
-	private Reservation reservation;
+    Reservation reservation;
 
 	@Before
 	public void setUp() {
@@ -77,31 +79,31 @@ public class BillTest {
 		// arrange
 		BillTestbuilder billTestbuilder = new BillTestbuilder().whitePrice(PRICE)
 				.whiteDiscountForPeople(DISCOUNTFORPEOPLE).whiteDiscountForDays(DISCOUNTFORDAYS);
-
 		// act
 		Bill bill = billTestbuilder.build();
 
 		// assert
-
 		assertEquals(PRICE, bill.getPrice(), DELTA);
 		assertEquals(DISCOUNTFORPEOPLE, bill.getDiscountForPeople());
 		assertEquals(DISCOUNTFORDAYS, bill.getDiscpuntForDays());
 	}
 
 	@Test
-	public void getCaculatePriceAndDiscountsTest() {
+	public void getCaculatePriceAndDiscountsTest( ) {
 		// arrange
+
+		
 		when(reservation.getReservationDate()).thenReturn(TUESDAY);
 		when(reservation.getNumberPeople()).thenReturn(NUMBER_PEOPLE_MORE_FIVE);
 		when(reservation.isDecor()).thenReturn(DECOR_TRUE);
 		when(reservation.getCurrentDate()).thenReturn(DATE_TWO);
-
+		Bill bill = new Bill(reservation);
 		float expectedPrice = 274800;
 		int expectedDiscountPeople = 41220;
 		int expectedDiscountDays = 54960;
 
 		// act
-		bill.getCaculatePriceAndDiscounts(reservation);
+		bill.getCaculatePriceAndDiscounts();
 
 		// assert
 		assertEquals(expectedPrice, bill.getPrice(), 0);
@@ -117,7 +119,6 @@ public class BillTest {
 		when(reservation.getNumberPeople()).thenReturn(NUMBER_PEOPLE_MORE_FIVE);
 		when(reservation.isDecor()).thenReturn(DECOR_TRUE);
 		when(reservation.getCurrentDate()).thenReturn(DATE_INITIAL_LES_DAY_REQUIRED);
-
 		float expectedPrice = EXPECTED_PRICE_ZERO;
 		int expectedDiscountPeople = EXPECTED_DISCOUNT_PEOPLE_ZERO;
 		int expectedDiscountDays = EXPECTED_DISCOUNT_DAYS_ZERO;
@@ -125,11 +126,20 @@ public class BillTest {
 		String messageResult = "";
 
 		// act
-		try {
-			bill.getCaculatePriceAndDiscounts(reservation);
-		} catch (Exception e) {
-			messageResult = e.getMessage();
-		}
+		
+
+		
+		try{
+			Bill bill = new Bill(reservation);
+			   try{
+				   bill.getCaculatePriceAndDiscounts();
+			   }catch (Exception e) {
+					messageResult = e.getMessage();
+			     throw e;
+			   }
+			}catch (Exception e) {
+				messageResult = e.getMessage();
+			}
 
 		// assert
 		assertEquals(expectedMenssage, messageResult);
@@ -141,11 +151,17 @@ public class BillTest {
 
 	@Test
 	public void giveValueToThePriceTest() {
+		
 		// arrange
 		when(reservation.getReservationDate()).thenReturn(TUESDAY);
+		when(reservation.getNumberPeople()).thenReturn(NUMBER_PEOPLE_MORE_FIVE);
+		when(reservation.isDecor()).thenReturn(DECOR_TRUE);
+		when(reservation.getCurrentDate()).thenReturn(DATE_INITIAL_LES_DAY_REQUIRED);
+		Bill bill = new Bill(reservation);
 		float expeted = STARTING_PRICE;
 		// act
-		float result = bill.giveValueToThePrice(reservation);
+		
+		float result = bill.giveValueToThePrice();
 
 		// assert
 		assertEquals(expeted, result, 0);
@@ -155,11 +171,15 @@ public class BillTest {
 	@Test
 	public void getDiscuontPerPeople() {
 		// arrange
-		when(reservation.getNumberPeople()).thenReturn(4);
+		when(reservation.getNumberPeople()).thenReturn(NUMBER_PEOPLE_LESS_FIVE);
+		when(reservation.getReservationDate()).thenReturn(TUESDAY);
+		when(reservation.isDecor()).thenReturn(DECOR_TRUE);
+		when(reservation.getCurrentDate()).thenReturn(DATE_INITIAL_LES_DAY_REQUIRED);
+		Bill bill = new Bill(reservation);
 		float price = PRICE;
-		float expected = 0;
+		float expected = EXPECTED_PRICE_ZERO;
 		// act
-		float result = bill.getDiscuontPerPeople(price, reservation);
+		float result = bill.getDiscuontPerPeople(price);
 
 		// assert
 		assertEquals(expected, result, 0);
@@ -169,10 +189,16 @@ public class BillTest {
 	@Test
 	public void ValueToThePriceIsZeroTest() {
 		// arrange
-		when(reservation.getReservationDate()).thenReturn(null);
-		float expeted = 0;
+		when(reservation.getNumberPeople()).thenReturn(NUMBER_PEOPLE_LESS_FIVE);
+		when(reservation.getReservationDate()).thenReturn(TUESDAY);
+		when(reservation.isDecor()).thenReturn(DECOR_TRUE);
+		when(reservation.getCurrentDate()).thenReturn(DATE_INITIAL_LES_DAY_REQUIRED);
+		Bill bill = new Bill(reservation);
+		when(reservation.getReservationDate()).thenReturn(RESERVATION_NULL);
+
+		float expeted = EXPECTED_PRICE_ZERO;
 		// act
-		float result = bill.giveValueToThePrice(reservation);
+		float result = bill.giveValueToThePrice();
 
 		// assert
 		assertEquals(expeted, result, 0);
@@ -183,9 +209,13 @@ public class BillTest {
 	public void getValueForPersonTest() {
 		// arrange
 		when(reservation.getNumberPeople()).thenReturn(NUMBER_PEOPLE);
+		when(reservation.getReservationDate()).thenReturn(TUESDAY);
+		when(reservation.isDecor()).thenReturn(DECOR_TRUE);
+		when(reservation.getCurrentDate()).thenReturn(DATE_INITIAL_LES_DAY_REQUIRED);
+		Bill bill = new Bill(reservation);
 		float expected = VALUE_PER_PEOPLE;
 		// act
-		float result = bill.getValueForPerson(reservation);
+		float result = bill.getValueForPerson();
 
 		// assert
 		assertEquals(expected, result, DELTA);
@@ -195,11 +225,16 @@ public class BillTest {
 	@Test
 	public void getDiscountForDaysTuesdayTest() {
 		// arrange
+		when(reservation.getNumberPeople()).thenReturn(NUMBER_PEOPLE);
 		when(reservation.getReservationDate()).thenReturn(TUESDAY);
+		when(reservation.isDecor()).thenReturn(DECOR_TRUE);
+		when(reservation.getCurrentDate()).thenReturn(DATE_INITIAL_LES_DAY_REQUIRED);
 		float price = PRICE;
 		float expected = TUESDAY_DISCOUNT;
+		Bill bill = new Bill(reservation);
+
 		// act
-		float result = bill.getDiscountForDaysTuesdayAndWednesday(price, reservation);
+		float result = bill.getDiscountForDaysTuesdayAndWednesday(price);
 
 		// assert
 		assertEquals(expected, result, DELTA);
@@ -209,10 +244,15 @@ public class BillTest {
 	public void getDiscountForDaysWednesdayTest() {
 		// arrange
 		when(reservation.getReservationDate()).thenReturn(WEDNESDAY);
+		when(reservation.getNumberPeople()).thenReturn(NUMBER_PEOPLE);
+		when(reservation.isDecor()).thenReturn(DECOR_TRUE);
+		when(reservation.getCurrentDate()).thenReturn(DATE_INITIAL_LES_DAY_REQUIRED);
 		float price = PRICE;
 		float expected = TUESDAY_DISCOUNT;
+		Bill bill = new Bill(reservation);
+
 		// act
-		float result = bill.getDiscountForDaysTuesdayAndWednesday(price, reservation);
+		float result = bill.getDiscountForDaysTuesdayAndWednesday(price);
 
 		// assert
 		assertEquals(expected, result, DELTA);
@@ -222,10 +262,13 @@ public class BillTest {
 	public void getFixedValueDecorTest() {
 		// arrange
 		when(reservation.isDecor()).thenReturn(DECOR_TRUE);
+		when(reservation.getReservationDate()).thenReturn(WEDNESDAY);
+		when(reservation.getNumberPeople()).thenReturn(NUMBER_PEOPLE);
+		when(reservation.getCurrentDate()).thenReturn(DATE_INITIAL_LES_DAY_REQUIRED);
 		float expectedPrice = DECORATION_VALUE;
-
+		Bill bill = new Bill(reservation);
 		// act
-		float resultPrice = bill.getFixedValueDecor(reservation);
+		float resultPrice = bill.getFixedValueDecor();
 
 		// assert
 		assertEquals(expectedPrice, resultPrice, DELTA);
@@ -235,10 +278,14 @@ public class BillTest {
 	public void getFixedValueDecorIsZeroTest() {
 		// arrange
 		when(reservation.isDecor()).thenReturn(DECOR_FALSE);
+		when(reservation.getReservationDate()).thenReturn(WEDNESDAY);
+		when(reservation.getNumberPeople()).thenReturn(NUMBER_PEOPLE);
+		when(reservation.getCurrentDate()).thenReturn(DATE_INITIAL_LES_DAY_REQUIRED);
 		float expectedPrice = EXPECTED_PRICE_ZERO;
+		Bill bill = new Bill(reservation);
 
 		// act
-		float resultPrice = bill.getFixedValueDecor(reservation);
+		float resultPrice = bill.getFixedValueDecor();
 
 		// assert
 		assertEquals(expectedPrice, resultPrice, DELTA);
@@ -249,10 +296,13 @@ public class BillTest {
 		// arrange
 		when(reservation.getReservationDate()).thenReturn(FRIDAY_DAY_FOR_TEST);
 		when(reservation.getCurrentDate()).thenReturn(DATE_OF_DIFFERENCE_REQUIRED);
+		when(reservation.getNumberPeople()).thenReturn(NUMBER_PEOPLE);
+		when(reservation.isDecor()).thenReturn(DECOR_TRUE);
+		Bill bill = new Bill(reservation);
 		float price = PRICE;
 		float expected = PRICE;
 		// act
-		float result = bill.daysWithRestriction(price, reservation);
+		float result = bill.daysWithRestriction(price);
 
 		// assert
 		assertEquals(expected, result, DELTA);
@@ -261,12 +311,17 @@ public class BillTest {
 	@Test
 	public void daysWithRestrictionIsZeroTest() {
 		// arrange
+		when(reservation.getReservationDate()).thenReturn(TUESDAY);
+		when(reservation.getCurrentDate()).thenReturn(DATE_TO_PROVE_DIFFERENCE_BETWEEN_DAYS_TWO);
+		when(reservation.getNumberPeople()).thenReturn(NUMBER_PEOPLE);
+		when(reservation.isDecor()).thenReturn(DECOR_TRUE);
+		Bill bill = new Bill(reservation);
 		when(reservation.getReservationDate()).thenReturn(DATE_TO_PROVE_DIFFERENCE_BETWEEN_DAYS_ONE);
 		when(reservation.getCurrentDate()).thenReturn(DATE_TO_PROVE_DIFFERENCE_BETWEEN_DAYS_TWO);
 		float price = PRICE;
 		float expected = EXPECTED_PRICE_ZERO;
 		// act
-		float result = bill.daysWithRestriction(price, reservation);
+		float result = bill.daysWithRestriction(price);
 
 		// assert
 		assertEquals(expected, result, DELTA);
@@ -275,12 +330,17 @@ public class BillTest {
 	@Test
 	public void daysWithRestrictionWhiteFirfayTest() {
 		// arrange
+		when(reservation.getReservationDate()).thenReturn(TUESDAY);
+		when(reservation.getCurrentDate()).thenReturn(DATE_TO_PROVE_DIFFERENCE_BETWEEN_DAYS_TWO);
+		when(reservation.getNumberPeople()).thenReturn(NUMBER_PEOPLE);
+		when(reservation.isDecor()).thenReturn(DECOR_TRUE);
+		Bill bill = new Bill(reservation);
 		when(reservation.getReservationDate()).thenReturn(FRIDAY);
 		when(reservation.getCurrentDate()).thenReturn(DATE_TO_PROVE_DIFFERENCE_BETWEEN_DAYS_TWO);
 		float price = PRICE;
 		float expected = EXPECTED_PRICE_ZERO;
 		// act
-		float result = bill.daysWithRestriction(price, reservation);
+		float result = bill.daysWithRestriction(price);
 
 		// assert
 		assertEquals(result, expected, DELTA);
@@ -289,12 +349,17 @@ public class BillTest {
 	@Test
 	public void daysWithRestrictionWhiteSaturdayTest() {
 		// arrange
+		when(reservation.getReservationDate()).thenReturn(TUESDAY);
+		when(reservation.getCurrentDate()).thenReturn(DATE_TO_PROVE_DIFFERENCE_BETWEEN_DAYS_TWO);
+		when(reservation.getNumberPeople()).thenReturn(NUMBER_PEOPLE);
+		when(reservation.isDecor()).thenReturn(DECOR_TRUE);
+		Bill bill = new Bill(reservation);
 		when(reservation.getReservationDate()).thenReturn(SATURDAY);
 		when(reservation.getCurrentDate()).thenReturn(DATE_TO_PROVE_DIFFERENCE_BETWEEN_DAYS_TWO);
 		float price = PRICE;
 		float expected = EXPECTED_PRICE_ZERO;
 		// act
-		float result = bill.daysWithRestriction(price, reservation);
+		float result = bill.daysWithRestriction(price);
 
 		// assert
 		assertEquals(result, expected, DELTA);
@@ -305,11 +370,13 @@ public class BillTest {
 		// arrange
 		when(reservation.getReservationDate()).thenReturn(DATE_TWO);
 		when(reservation.getCurrentDate()).thenReturn(DATE_ONE);
-
+		when(reservation.getNumberPeople()).thenReturn(NUMBER_PEOPLE);
+		when(reservation.isDecor()).thenReturn(DECOR_TRUE);
+		Bill bill = new Bill(reservation);
 		long expected = 1;
 		// act
 
-		long result = bill.differenceBetweenCurrentDateAndReservationDate(reservation);
+		long result = bill.differenceBetweenCurrentDateAndReservationDate();
 
 		// assert
 		assertEquals(expected, result);
