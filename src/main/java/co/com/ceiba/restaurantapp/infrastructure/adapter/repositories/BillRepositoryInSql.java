@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import co.com.ceiba.restaurantapp.aplicacion.dto.ReservationRequest;
 import co.com.ceiba.restaurantapp.domain.model.Bill;
-import co.com.ceiba.restaurantapp.domain.model.Reservation;
 import co.com.ceiba.restaurantapp.domain.repositories.BillRepository;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.builders.BillBuilder;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.builders.ReservationBuilder;
@@ -54,7 +53,7 @@ public class BillRepositoryInSql implements BillRepository {
 	public Bill getBillById(int id) {
 		BillEntity billEntity = billDao.findById(id);
 		ReservationEntity reservationEntity = reservationDao.findById(id);
- 		Bill bill = billBuilder.convertBillEntityToBillWhit(billEntity,reservationEntity);
+ 		Bill bill = billBuilder.convertBillEntityToBillWhitReservation(billEntity,reservationEntity);
 		return bill;
 	}
 

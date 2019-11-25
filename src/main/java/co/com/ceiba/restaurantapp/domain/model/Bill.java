@@ -3,7 +3,6 @@ package co.com.ceiba.restaurantapp.domain.model;
 import java.util.Calendar;
 import java.util.Date;
 
-
 import co.com.ceiba.restaurantapp.domain.strategies.ArgumentsValidator;
 
 public class Bill {
@@ -38,15 +37,11 @@ public class Bill {
 		this.getCaculatePriceAndDiscounts();
 	}
 
-	public Bill(int idBill,float price, int discountForPeople, int discpuntForDays) {
+	public Bill(int idBill, float price, int discountForPeople, int discpuntForDays) {
 		this.price = price;
 		this.discountForPeople = discountForPeople;
 		this.discpuntForDays = discpuntForDays;
 	}
-	
-	
-	
-	
 
 	public Bill(int idBill, float price, int discountForPeople, int discpuntForDays, Reservation reservation) {
 		this.idBill = idBill;
@@ -71,13 +66,10 @@ public class Bill {
 	public int getDiscpuntForDays() {
 		return discpuntForDays;
 	}
-	
-	
 
 	public Reservation getReservation() {
 		return reservation;
 	}
-
 
 	public void getCaculatePriceAndDiscounts() {
 		price = giveValueToThePrice();
@@ -114,7 +106,7 @@ public class Bill {
 		return discuont;
 	}
 
-	public float getDiscountForDaysTuesdayAndWednesday(float price ) {
+	public float getDiscountForDaysTuesdayAndWednesday(float price) {
 		float discountDay = INITIALIZING_VALUE;
 		int day = reservation.getReservationDate().get(Calendar.DAY_OF_WEEK);
 
@@ -125,7 +117,7 @@ public class Bill {
 		return discountDay;
 	}
 
-	public float getFixedValueDecor( ) {
+	public float getFixedValueDecor() {
 		float valueDecor = INITIALIZING_VALUE;
 		if (this.reservation.isDecor()) {
 			valueDecor = FIXED_DECOR;
@@ -145,7 +137,7 @@ public class Bill {
 		return restriction;
 	}
 
-	public long differenceBetweenCurrentDateAndReservationDate( ) {
+	public long differenceBetweenCurrentDateAndReservationDate() {
 		long daysDifference = INITIALIZING_VALUE;
 		Date fechaEntrada = reservation.getReservationDate().getTime();
 		Date fechaHoy = reservation.getCurrentDate().getTime();
