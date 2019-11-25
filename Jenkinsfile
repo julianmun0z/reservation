@@ -10,8 +10,8 @@ pipeline {
    }
 
 		 tools {
-//       jdk 'JDK 8_Centos'
-//       gradle 'Gradle 4.5_Centos'
+       jdk 'JDK8_Centos'
+//       gradle 'Gradle4.5_Centos'
    }
    
    stages{
