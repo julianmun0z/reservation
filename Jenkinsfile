@@ -9,10 +9,10 @@ pipeline {
        disableConcurrentBuilds()
    }
 
-		 tools {
-        'JDK8_Centos'
-        'Gradle4.5_Centos'
-   }
+//		 tools {
+//       jdk 'JDK8_Centos'
+//       gradle 'Gradle4.5_Centos'
+//   }
    
    stages{
        stage('Checkout') {
