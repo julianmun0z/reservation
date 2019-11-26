@@ -21,6 +21,7 @@ public class Client {
 		ArgumentsValidator.restrictionForValueEmpty(lastName, EL_APELLIDO_ES_OBLIGATORIO);
 		ArgumentsValidator.restrictionForNull(email, EL_EMAIL_ES_OBLIGATORIO);
 		ArgumentsValidator.restrictionForValueEmpty(email, EL_EMAIL_ES_OBLIGATORIO);
+
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
