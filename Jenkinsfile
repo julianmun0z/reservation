@@ -10,7 +10,6 @@ pipeline {
    }
 
 		 tools {
-       jdk 'JDK8_Centos'
    }
    
    stages{
