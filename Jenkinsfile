@@ -9,8 +9,8 @@ pipeline {
        disableConcurrentBuilds()
    }
 
-		 tools {
-   }
+//		 tools {
+//   }
    
    stages{
        stage('Checkout') {
