@@ -26,7 +26,7 @@ public class BillRepositoryInSql implements BillRepository {
 
 	@Autowired
 	ReservationDao reservationDao;
-	
+
 	@Autowired
 	BillBuilder billBuilder;
 
@@ -53,7 +53,7 @@ public class BillRepositoryInSql implements BillRepository {
 	public Bill getBillById(int id) {
 		BillEntity billEntity = billDao.findById(id);
 		ReservationEntity reservationEntity = reservationDao.findById(id);
- 		Bill bill = billBuilder.convertBillEntityToBillWhitReservation(billEntity,reservationEntity);
+		Bill bill = billBuilder.convertBillEntityToBillWhitReservation(billEntity, reservationEntity);
 		return bill;
 	}
 

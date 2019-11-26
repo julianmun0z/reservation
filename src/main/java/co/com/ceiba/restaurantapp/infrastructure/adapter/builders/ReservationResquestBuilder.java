@@ -8,8 +8,6 @@ import co.com.ceiba.restaurantapp.aplicacion.dto.ReservationRequest;
 @Configuration
 public class ReservationResquestBuilder {
 
-
-
 	public ReservationRequest getReservartionObjectReservationRequest(Reservation reservation) {
 
 		ReservationRequest reservationRequest = new ReservationRequest();

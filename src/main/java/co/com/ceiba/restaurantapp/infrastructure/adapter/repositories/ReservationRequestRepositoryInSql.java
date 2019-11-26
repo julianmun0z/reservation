@@ -19,10 +19,9 @@ import co.com.ceiba.restaurantapp.infrastructure.adapter.dao.ReservationDao;
 @Service
 public class ReservationRequestRepositoryInSql implements ReservationRequestRepository {
 
-	
 	@Autowired
 	ReservationRequestService reservationRequestService;
-	
+
 	@Autowired
 	ReservationResquestBuilder reservationResquestBuilder;
 
@@ -30,7 +29,7 @@ public class ReservationRequestRepositoryInSql implements ReservationRequestRepo
 	ReservationBuilder reservationBuilder;
 
 	@Autowired
-	ReservationRepositoryInSql reservationRepositoryInMemory;
+	ReservationRepositoryInSql ReservationRepositoryInSql;
 
 	@Autowired
 	BillRepositoryInSql billRepositoryInMemory;
@@ -64,7 +63,7 @@ public class ReservationRequestRepositoryInSql implements ReservationRequestRepo
 	@Override
 	public void addReservationRequest(ReservationRequest reservationRequest) {
 		Reservation reservation = reservationRequestService.createReservation(reservationRequest);
-		reservationRepositoryInMemory.addReservation(reservation);
+		ReservationRepositoryInSql.addReservation(reservation);
 
 	}
 

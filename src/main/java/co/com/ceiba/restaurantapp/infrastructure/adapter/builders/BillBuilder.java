@@ -38,7 +38,7 @@ public class BillBuilder {
 	}
 
 	public Bill convertBillEntityToBillWhitReservation(BillEntity billEntity, ReservationEntity reservationEntity) {
-		Client client = new Client(reservationEntity.getClientEntity().getFirstName(), 
+		Client client = new Client(reservationEntity.getClientEntity().getFirstName(),
 				reservationEntity.getClientEntity().getLastName(), reservationEntity.getClientEntity().getEmail(),
 				reservationEntity.getClientEntity().getPhoneNumber());
 		Reservation reservations = new Reservation(reservationEntity.getIdReservation(),

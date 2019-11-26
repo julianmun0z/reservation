@@ -17,7 +17,6 @@ import co.com.ceiba.restaurantapp.infrastructure.adapter.repositories.BillReposi
 @RequestMapping(value = "/bill")
 public class BillController {
 
-	
 	@Autowired
 	BillRepositoryInSql reservationRepositoryPersistent;
 

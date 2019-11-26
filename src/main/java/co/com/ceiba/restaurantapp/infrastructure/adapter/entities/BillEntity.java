@@ -1,6 +1,5 @@
 package co.com.ceiba.restaurantapp.infrastructure.adapter.entities;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +25,7 @@ public class BillEntity {
 
 	@Column(name = "discpuntfordays")
 	private int discpuntForDays;
-	
+
 	public int getBillId() {
 		return billId;
 	}
