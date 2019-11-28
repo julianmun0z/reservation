@@ -13,21 +13,12 @@ public class ReservationRequest {
 	private boolean decor;
 	private int numberPeople;
 
-	public ReservationRequest(int id, String firstName, String lastName, String email, String phoneNumber,
-			Calendar reservationDate, boolean decor, int numberPeople) {
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-		this.reservationDate = reservationDate;
-		this.decor = decor;
-		this.numberPeople = numberPeople;
-	}
+
 
 	public ReservationRequest() {
 	}
 
+	
 	public int getId() {
 		return id;
 	}
