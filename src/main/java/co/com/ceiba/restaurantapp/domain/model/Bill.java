@@ -70,10 +70,11 @@ public class Bill {
 	}
 
 	public float giveValueToThePrice() {
+		float newPrice = INITIALIZING_VALUE;
 		if (this.reservation.getReservationDate() != null) {
-			this.price = FIXED_PRICE;
+			newPrice = FIXED_PRICE;
 		}
-		return price;
+		return newPrice;
 	}
 
 	public float getValueForPerson() {

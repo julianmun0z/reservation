@@ -5,15 +5,16 @@ import co.com.ceiba.restaurantapp.domain.repositories.ReservationRequestReposito
 
 public class HandlerDeleteReservation {
 
-	private ReservationRequestRepository ReservationRequestRepository;
+	private ReservationRequestRepository reservationRequestRepository;
 
 	public HandlerDeleteReservation(
 			co.com.ceiba.restaurantapp.domain.repositories.ReservationRequestRepository reservationRequestRepository) {
-		ReservationRequestRepository = reservationRequestRepository;
+		this.reservationRequestRepository = reservationRequestRepository;
 	}
 
 	public ReservationRequest execute(int id) {
-		return this.ReservationRequestRepository.deleteReservationRequest(id);
+		return this.reservationRequestRepository.deleteReservationRequest(id);
 	}
 
 }
+ 
