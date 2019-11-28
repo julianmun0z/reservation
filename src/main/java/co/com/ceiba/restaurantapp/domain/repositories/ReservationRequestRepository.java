@@ -9,8 +9,8 @@ public interface ReservationRequestRepository {
 	public List<ReservationRequest> getReservationRequests();
 
 	public void addReservationRequest(ReservationRequest reservationRequest);
-
-	public ReservationRequest ReservationRequestById(int id);
+ 
+	public ReservationRequest reservationRequestById(int id);
 
 	public void editReservationRequest(ReservationRequest reservationRequest);
 

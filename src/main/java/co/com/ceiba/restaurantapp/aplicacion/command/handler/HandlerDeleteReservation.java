@@ -1,7 +1,7 @@
 package co.com.ceiba.restaurantapp.aplicacion.command.handler;
 
 import co.com.ceiba.restaurantapp.aplicacion.dto.ReservationRequest;
-import co.com.ceiba.restaurantapp.domain.repositories.ReservationRequestRepository;;
+import co.com.ceiba.restaurantapp.domain.repositories.ReservationRequestRepository;
 
 public class HandlerDeleteReservation {
 

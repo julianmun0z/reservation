@@ -5,15 +5,15 @@ import co.com.ceiba.restaurantapp.domain.repositories.ReservationRequestReposito
 
 public class HandlerGetForIdReservation {
 
-	private ReservationRequestRepository ReservationRequestRepository;
+	private ReservationRequestRepository reservationRequestRepository; 
 
 	public HandlerGetForIdReservation(
 			co.com.ceiba.restaurantapp.domain.repositories.ReservationRequestRepository reservationRequestRepository) {
-		ReservationRequestRepository = reservationRequestRepository;
+		this.reservationRequestRepository = reservationRequestRepository;
 	}
 
 	public ReservationRequest execute(int id) {
-		return this.ReservationRequestRepository.ReservationRequestById(id);
+		return this.reservationRequestRepository.reservationRequestById(id);
 	}
 
 }
