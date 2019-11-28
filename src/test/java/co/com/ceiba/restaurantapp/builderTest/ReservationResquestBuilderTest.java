@@ -22,7 +22,6 @@ import co.com.ceiba.restaurantapp.infrastructure.adapter.entities.ReservationEnt
 public class ReservationResquestBuilderTest {
 
 	private static final int NUMBER_PEOPLE = 5;
-	private static final float PRICE = 350000;
 
 	private static final String FIRSTNAME = "juan";
 	private static final String LASTNAME = "gomez";
@@ -50,7 +49,6 @@ public class ReservationResquestBuilderTest {
 
 	@InjectMocks
 	private ReservationResquestBuilder reservationResquestBuilder;
-	
 
 	@Before
 	public void setUp() {
@@ -58,39 +56,7 @@ public class ReservationResquestBuilderTest {
 		reservationResquestBuilder = new ReservationResquestBuilder();
 	}
 
-//	@Test
-//	public void divisionReservationRequest() {
-//		// arrange
-//
-//		when(reservationRequest.getFirstName()).thenReturn(FIRSTNAME);
-//		when(reservationRequest.getLastName()).thenReturn(LASTNAME);
-//		when(reservationRequest.getEmail()).thenReturn(EMAIL);
-//		when(reservationRequest.getPhoneNumber()).thenReturn(PHONENUMBER);
-//		when(bill.getPrice()).thenReturn(PRICE);
-//		when(reservationRequest.getNumberPeople()).thenReturn(NUMBER_PEOPLE);
-//		when(reservationRequest.isDecor()).thenReturn(DECOR);
-//		when(reservationRequest.getReservationDate()).thenReturn(DATE_FOR_DIVISION_DTO);
-//		when(reservation.getCurrentDate()).thenReturn(DATE_WITH_TUESDAY_AND_WENESDAY);
-//
-//		String expectedFisrtName = FIRSTNAME;
-//		String expectedLastName = LASTNAME;
-//		String expectedEmail = EMAIL;
-//		String expectedPhoneNumber = PHONENUMBER;
-//		Calendar expectedReservationDate = DATE_FOR_DIVISION_DTO;
-//		int expecteNumberPeople = NUMBER_PEOPLE;
-//		boolean expedtedDecor = DECOR;
-//		// act
-//
-//
-//		// assert
-//		assertEquals(expectedFisrtName, result.getClient().getFirstName());
-//		assertEquals(expectedLastName, result.getClient().getLastName());
-//		assertEquals(expectedEmail, result.getClient().getEmail());
-//		assertEquals(expectedPhoneNumber, result.getClient().getPhoneNumber());
-//		assertEquals(expectedReservationDate, result.getReservationDate());
-//		assertEquals(expecteNumberPeople, result.getNumberPeople());
-//		assertEquals(expedtedDecor, result.isDecor());
-//	}
+
 
 	@Test
 	public void getReservartionObjectReservationRequestTest() {

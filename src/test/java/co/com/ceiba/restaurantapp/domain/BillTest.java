@@ -11,7 +11,6 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import co.com.ceiba.restaurantapp.TestDataBuilder.BillTestbuilder;
 import co.com.ceiba.restaurantapp.domain.model.Bill;
 import co.com.ceiba.restaurantapp.domain.model.Client;
 import co.com.ceiba.restaurantapp.domain.model.Reservation;
@@ -61,38 +60,21 @@ public class BillTest {
 	private Client client;
 
 	@Mock
-    Reservation reservation;
+	Reservation reservation;
 
 	@Before
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
-		bill = new Bill(null);
+		@SuppressWarnings("unused")
+		Reservation reservation;
 	}
 
 	private static final float PRICE = 350000;
-	private static final int DISCOUNTFORPEOPLE = 15;
-	private static final int DISCOUNTFORDAYS = 20;
 
 	@Test
-	public void createBillTest() {
-
-		// arrange
-		BillTestbuilder billTestbuilder = new BillTestbuilder().whitePrice(PRICE)
-				.whiteDiscountForPeople(DISCOUNTFORPEOPLE).whiteDiscountForDays(DISCOUNTFORDAYS);
-		// act
-		Bill bill = billTestbuilder.build();
-
-		// assert
-		assertEquals(PRICE, bill.getPrice(), DELTA);
-		assertEquals(DISCOUNTFORPEOPLE, bill.getDiscountForPeople());
-		assertEquals(DISCOUNTFORDAYS, bill.getDiscpuntForDays());
-	}
-
-	@Test
-	public void getCaculatePriceAndDiscountsTest( ) {
+	public void getCaculatePriceAndDiscountsTest() {
 		// arrange
 
-		
 		when(reservation.getReservationDate()).thenReturn(TUESDAY);
 		when(reservation.getNumberPeople()).thenReturn(NUMBER_PEOPLE_MORE_FIVE);
 		when(reservation.isDecor()).thenReturn(DECOR_TRUE);
@@ -126,20 +108,18 @@ public class BillTest {
 		String messageResult = "";
 
 		// act
-		
 
-		
-		try{
+		try {
 			Bill bill = new Bill(reservation);
-			   try{
-				   bill.getCaculatePriceAndDiscounts();
-			   }catch (Exception e) {
-					messageResult = e.getMessage();
-			     throw e;
-			   }
-			}catch (Exception e) {
+			try {
+				bill.getCaculatePriceAndDiscounts();
+			} catch (Exception e) {
 				messageResult = e.getMessage();
+				throw e;
 			}
+		} catch (Exception e) {
+			messageResult = e.getMessage();
+		}
 
 		// assert
 		assertEquals(expectedMenssage, messageResult);
@@ -151,7 +131,7 @@ public class BillTest {
 
 	@Test
 	public void giveValueToThePriceTest() {
-		
+
 		// arrange
 		when(reservation.getReservationDate()).thenReturn(TUESDAY);
 		when(reservation.getNumberPeople()).thenReturn(NUMBER_PEOPLE_MORE_FIVE);
@@ -160,7 +140,7 @@ public class BillTest {
 		Bill bill = new Bill(reservation);
 		float expeted = STARTING_PRICE;
 		// act
-		
+
 		float result = bill.giveValueToThePrice();
 
 		// assert

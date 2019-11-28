@@ -29,6 +29,7 @@ pipeline {
                         url:'https://github.com/julianmun0z/reservation.git']]])
            }  
        }
+       
        stage('Unit Tests') {
            steps{
                echo "------------>Unit Tests<------------"
@@ -68,11 +69,12 @@ pipeline {
 	          }
 	         failure {
 	 		echo 'This will run only if failed' 
-	 		// mail (to: 'julian_munoz@ceiba.com.co',subject: "Failed Pipeline:${currentBuild.fullDisplayName}",
-	 		//body: "Something is wrongwith ${env.BUILD_URL}")
+	 		 mail (to: 'julian_munoz@ceiba.com.co',subject: "Failed Pipeline:${currentBuild.fullDisplayName}",
+	 		body: "Something is wrongwith ${env.BUILD_URL}")
 	 		}
 		 }
 		 
 
 	       
   }
+  
