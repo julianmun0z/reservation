@@ -28,9 +28,6 @@ public class BillBuilderTest {
 	private static final float EXPECTED_PRICE = 350000;
 	private static final Calendar TUESDAY = new GregorianCalendar(2019, 8, 10);
 
-	
-
-
 	@Mock
 	private Client client;
 
@@ -59,28 +56,6 @@ public class BillBuilderTest {
 		billBuilder = new BillBuilder();
 	}
 
-	@Test
-	public void converDtoToEntityTest() {
-		// arrange
-		when(billEntity.getBillId()).thenReturn(2);
-		when(billEntity.getPrice()).thenReturn(PRICE);
-		when(billEntity.getDiscountForPeople()).thenReturn(DISCOUNT_FOR_PEOPLE);
-		when(billEntity.getDiscpuntForDays()).thenReturn(DISCOUNT_FOR_DAY);
-		int expectedBillID = 2;
-		float expected = EXPECTED_PRICE;
-		int expectedDiscountPeople = DISCOUNT_FOR_PEOPLE;
-		int expectedDiscountDay = DISCOUNT_FOR_DAY;
-
-		// act
-		Bill result = billBuilder.convertBillEntityToBill(billEntity);
-
-		// assert
-		assertEquals(expectedBillID, 2);
-		assertEquals(expected, result.getPrice(), 0);
-		assertEquals(expectedDiscountPeople, result.getDiscountForPeople());
-		assertEquals(expectedDiscountDay, result.getDiscpuntForDays());
-
-	}
 
 	@Test
 	public void converDtoToEntity() {
@@ -118,9 +93,9 @@ public class BillBuilderTest {
 		when(billEntity.getPrice()).thenReturn(PRICE);
 		when(billEntity.getDiscountForPeople()).thenReturn(DISCOUNT_FOR_PEOPLE);
 		when(billEntity.getDiscpuntForDays()).thenReturn(DISCOUNT_FOR_DAY);
-		float expected = EXPECTED_PRICE;
-		int expectedDiscountPeople = DISCOUNT_FOR_PEOPLE;
-		int expectedDiscountDay = DISCOUNT_FOR_DAY;
+		float expected = 238000;
+		int expectedDiscountPeople = 0;
+		int expectedDiscountDay = 47600;
 
 		//act
 		

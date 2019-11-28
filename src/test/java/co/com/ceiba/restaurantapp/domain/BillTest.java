@@ -66,7 +66,7 @@ public class BillTest {
 	@Before
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
-		bill = new Bill(0, 0, 0, 0);
+		bill = new Bill(null);
 	}
 
 	private static final float PRICE = 350000;

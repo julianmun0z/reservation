@@ -37,20 +37,6 @@ public class Bill {
 		this.getCaculatePriceAndDiscounts();
 	}
 
-	public Bill(int idBill, float price, int discountForPeople, int discpuntForDays) {
-		this.price = price;
-		this.discountForPeople = discountForPeople;
-		this.discpuntForDays = discpuntForDays;
-	}
-
-	public Bill(int idBill, float price, int discountForPeople, int discpuntForDays, Reservation reservation) {
-		this.idBill = idBill;
-		this.price = price;
-		this.discountForPeople = discountForPeople;
-		this.discpuntForDays = discpuntForDays;
-		this.reservation = reservation;
-	}
-
 	public int getIdBill() {
 		return idBill;
 	}

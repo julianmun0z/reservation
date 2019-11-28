@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import co.com.ceiba.restaurantapp.domain.model.Reservation;
 import co.com.ceiba.restaurantapp.domain.repositories.ReservationRepository;
@@ -12,7 +12,7 @@ import co.com.ceiba.restaurantapp.infrastructure.adapter.builders.ReservationBui
 import co.com.ceiba.restaurantapp.infrastructure.adapter.entities.ReservationEntity;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.dao.ReservationDao;
 
-@Service
+@Repository
 public class ReservationRepositoryInSql implements ReservationRepository {
 
 	@Autowired

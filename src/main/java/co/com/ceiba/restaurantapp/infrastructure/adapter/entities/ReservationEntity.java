@@ -32,11 +32,7 @@ public class ReservationEntity {
 	private boolean decor;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "idbill", nullable = false)
-	private BillEntity billEntity;
-
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "idclient", nullable = false)
+	@JoinColumn(name = "idclient", nullable = true)
 	private ClientEntity clientEntity;
 
 	public Integer getIdReservation() {
@@ -69,14 +65,6 @@ public class ReservationEntity {
 
 	public void setDecor(boolean decor) {
 		this.decor = decor;
-	}
-
-	public BillEntity getBillEntity() {
-		return billEntity;
-	}
-
-	public void setBillEntity(BillEntity billEntity) {
-		this.billEntity = billEntity;
 	}
 
 	public ClientEntity getClientEntity() {

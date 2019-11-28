@@ -8,9 +8,8 @@ import org.springframework.stereotype.Service;
 
 import co.com.ceiba.restaurantapp.domain.model.Reservation;
 import co.com.ceiba.restaurantapp.domain.repositories.ReservationRequestRepository;
-import co.com.ceiba.restaurantapp.domain.services.ReservationRequestService;
+import co.com.ceiba.restaurantapp.aplicacion.command.factory.FactoryReservation;
 import co.com.ceiba.restaurantapp.aplicacion.dto.ReservationRequest;
-import co.com.ceiba.restaurantapp.infrastructure.adapter.builders.BillBuilder;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.builders.ReservationBuilder;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.builders.ReservationResquestBuilder;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.entities.ReservationEntity;
@@ -20,7 +19,7 @@ import co.com.ceiba.restaurantapp.infrastructure.adapter.dao.ReservationDao;
 public class ReservationRequestRepositoryInSql implements ReservationRequestRepository {
 
 	@Autowired
-	ReservationRequestService reservationRequestService;
+	FactoryReservation ractoryReservation; 
 
 	@Autowired
 	ReservationResquestBuilder reservationResquestBuilder;
@@ -29,18 +28,10 @@ public class ReservationRequestRepositoryInSql implements ReservationRequestRepo
 	ReservationBuilder reservationBuilder;
 
 	@Autowired
-	ReservationRepositoryInSql ReservationRepositoryInSql;
-
-	@Autowired
-	BillRepositoryInSql billRepositoryInMemory;
-
-	@Autowired
-	ClientRepositoryInSql clientRepositoryInMemory;
+	ReservationRepositoryInSql reservationRepositoryInSql;
 
 	@Autowired
 	ReservationDao reservationDao;
-
-	BillBuilder billBuilder;
 
 	@Override
 	public List<ReservationRequest> getReservationRequests() {
@@ -62,9 +53,8 @@ public class ReservationRequestRepositoryInSql implements ReservationRequestRepo
 
 	@Override
 	public void addReservationRequest(ReservationRequest reservationRequest) {
-		Reservation reservation = reservationRequestService.createReservation(reservationRequest);
-		ReservationRepositoryInSql.addReservation(reservation);
-
+		Reservation reservation = ractoryReservation.createReservation(reservationRequest);
+		this.reservationRepositoryInSql.addReservation(reservation);
 	}
 
 	@Override
@@ -78,7 +68,7 @@ public class ReservationRequestRepositoryInSql implements ReservationRequestRepo
 
 	@Override
 	public void editReservationRequest(ReservationRequest reservationRequest) {
-		Reservation reservation = reservationRequestService.createReservation(reservationRequest);
+		Reservation reservation = ractoryReservation.createReservation(reservationRequest);
 		ReservationEntity reservationEntity = reservationBuilder.convertReservationToReservationEntity(reservation);
 		reservationDao.save(reservationEntity);
 	}

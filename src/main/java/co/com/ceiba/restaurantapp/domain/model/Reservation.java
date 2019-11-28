@@ -13,7 +13,6 @@ public class Reservation {
 	private Calendar reservationDate;
 	private int numberPeople;
 	private boolean decor;
-	private Bill bill;
 	private Client client;
 
 	public Reservation(int idReservation, Calendar reservationDate, int numberPeople, boolean decor, Client client) {
@@ -26,14 +25,6 @@ public class Reservation {
 		this.numberPeople = numberPeople;
 		this.decor = decor;
 		this.client = client;
-	}
-
-	public Bill getBill() {
-		return bill;
-	}
-
-	public void setBill(Bill bill) {
-		this.bill = bill;
 	}
 
 	public int getIdReservation() {

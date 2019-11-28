@@ -49,6 +49,7 @@ public class ReservationRequestControllerTest {
 	public void getAllReservation() throws Exception {
 		mvc.perform(MockMvcRequestBuilders.get("/reservationrequest").accept(MediaType.APPLICATION_JSON)).andDo(print())
 				.andExpect(status().isOk());
+				//.andExpect(matcher);
 	}
 
 	@Test

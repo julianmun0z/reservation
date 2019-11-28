@@ -1,6 +1,7 @@
 package co.com.ceiba.restaurantapp.TestDataBuilder;
 
 import co.com.ceiba.restaurantapp.domain.model.Bill;
+import co.com.ceiba.restaurantapp.domain.model.Reservation;
 
 public class BillTestbuilder {
 
@@ -13,6 +14,7 @@ public class BillTestbuilder {
 	private float price;
 	private int discountForPeople;
 	private int discpuntForDays;
+	private Reservation reservation;
 
 	public BillTestbuilder() {
 		this.idBill  = ID_BILL;
@@ -41,7 +43,7 @@ public class BillTestbuilder {
 	}
 
 	public Bill build() {
-		return new Bill(idBill, price, discountForPeople, discpuntForDays);
+		return new Bill(reservation);
 	}
 
 }

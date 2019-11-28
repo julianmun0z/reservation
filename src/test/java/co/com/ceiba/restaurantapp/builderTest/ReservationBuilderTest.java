@@ -27,7 +27,6 @@ public class ReservationBuilderTest {
 	private static final Boolean DECOR = true;
 	private static final int NUMBER_PEOPLE = 5;
 
-	private static final float PRICE = 60000;
 
 	private static final String FIRSTNAME = "juan";
 	private static final String LASTNAME = "gomez";
@@ -78,8 +77,6 @@ public class ReservationBuilderTest {
 		when(reservation.getReservationDate()).thenReturn(DATE_FOR_DIVISION_DTO);
 		when(reservation.getNumberPeople()).thenReturn(NUMBER_PEOPLE);
 		when(reservation.isDecor()).thenReturn(DECOR);
-		when(reservation.getBill()).thenReturn(bill);
-		when(reservation.getBill().getPrice()).thenReturn(PRICE);
 		when(reservation.getClient()).thenReturn(client);
 		when(reservation.getClient().getFirstName()).thenReturn(FIRSTNAME);
 
@@ -87,7 +84,6 @@ public class ReservationBuilderTest {
 		boolean expectedDecor = DECOR;
 		int expectedPeople = NUMBER_PEOPLE;
 		int expectedIdReservation = ID_RESERVATION;
-		float expectedPrice = PRICE;
 		String expectedFirstName = FIRSTNAME;
 
 		// act
@@ -100,7 +96,6 @@ public class ReservationBuilderTest {
 		assertEquals(expectedReservationDay, resultReservationEntity.getReservationDate());
 		assertEquals(expectedDecor, resultReservationEntity.isDecor());
 		assertEquals(expectedPeople, resultReservationEntity.getNumberPeople());
-		assertEquals(expectedPrice, resultReservationEntity.getBillEntity().getPrice(), 0);
 		assertEquals(expectedFirstName, resultReservationEntity.getClientEntity().getFirstName());
 	}
 
@@ -110,7 +105,6 @@ public class ReservationBuilderTest {
 		when(reservationEntity.getReservationDate()).thenReturn(DATE_FOR_DIVISION_DTO);
 		when(reservationEntity.getNumberPeople()).thenReturn(NUMBER_PEOPLE);
 		when(reservationEntity.isDecor()).thenReturn(DECOR);
-		when(reservationEntity.getBillEntity()).thenReturn(billEntity);
 		when(reservationEntity.getClientEntity()).thenReturn(clientEntity);
 		when(reservationEntity.getClientEntity().getFirstName()).thenReturn(FIRSTNAME);
 		when(reservationEntity.getClientEntity().getLastName()).thenReturn(LASTNAME);

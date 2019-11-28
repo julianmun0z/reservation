@@ -44,7 +44,7 @@ public class ClientTestDataBuilder {
 	}
 
 	public Client build() {
-		return new Client(firstName, lastName, Email, phoneNumber);
+		return new Client(0, firstName, lastName, Email, phoneNumber);
 	}
 
 }
