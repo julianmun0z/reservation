@@ -12,7 +12,7 @@ pipeline {
 
 		 tools {
        jdk 'JDK8_Centos'
-       gradle 'Gradle4.5_Centos'
+       gradle 'Gradle4.10_Centos'
    }
    
    stages{
