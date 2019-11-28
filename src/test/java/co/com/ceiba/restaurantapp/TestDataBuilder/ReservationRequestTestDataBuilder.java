@@ -90,7 +90,8 @@ public class ReservationRequestTestDataBuilder {
 	}
 
 	public ReservationRequest build() {
-		return new ReservationRequest();
+		return new ReservationRequest(id, firstName, lastName, email, phoneNumber, reservationDate, decor,
+				numberPeople);
 	}
 
 }
