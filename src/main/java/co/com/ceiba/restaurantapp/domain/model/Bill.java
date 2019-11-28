@@ -8,7 +8,7 @@ import co.com.ceiba.restaurantapp.domain.strategies.ArgumentsValidator;
 public class Bill {
 
 	private static final float FIXED_PRICE = 60000;
-	private static final int INITIALIZING_VALUE = 1;
+	private static final int INITIALIZING_VALUE = 0;
 	private static final int VALUE_FOR_PERSON = 50000;
 	private static final int MINIMUM_OF_PEOPLE_FOR_DISCOUNT = 5;
 	private static final int PERCENT_FOR_PEOPLE = 15;
