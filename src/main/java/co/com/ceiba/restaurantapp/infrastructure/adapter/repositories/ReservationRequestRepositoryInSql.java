@@ -19,7 +19,7 @@ import co.com.ceiba.restaurantapp.infrastructure.adapter.dao.ReservationDao;
 public class ReservationRequestRepositoryInSql implements ReservationRequestRepository {
 
 	@Autowired
-	FactoryReservation ractoryReservation; 
+	FactoryReservation ractoryReservation;
 
 	@Autowired
 	ReservationResquestBuilder reservationResquestBuilder;
@@ -61,9 +61,8 @@ public class ReservationRequestRepositoryInSql implements ReservationRequestRepo
 	public ReservationRequest reservationRequestById(int id) {
 		ReservationEntity reservationEntity = reservationDao.findById(id);
 		Reservation reservation = reservationBuilder.convertReservationEntityToReservation(reservationEntity);
-		ReservationRequest reservationRequest = reservationResquestBuilder
-				.getReservartionObjectReservationRequest(reservation);
-		return reservationRequest;
+		return reservationResquestBuilder.getReservartionObjectReservationRequest(reservation);
+
 	}
 
 	@Override
