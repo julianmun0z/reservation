@@ -26,8 +26,9 @@ public class BillControllerTest {
 	
 	@MockBean
 	private BillController billController;
+	
 	@Test
-	public void getReservationById() throws Exception {
+	public void getBillById() throws Exception {
 		mvc.perform(MockMvcRequestBuilders.get("/bill/{id}", 1).accept(MediaType.APPLICATION_JSON))
 				.andDo(print()).andExpect(status().isOk());
 	}
