@@ -28,9 +28,6 @@ public class ReservationRequestRepositoryInSql implements ReservationRequestRepo
 	ReservationBuilder reservationBuilder;
 
 	@Autowired
-	ReservationRepositoryInSql reservationRepositoryInSql;
-
-	@Autowired
 	ReservationDao reservationDao;
 
 	@Override
@@ -54,7 +51,8 @@ public class ReservationRequestRepositoryInSql implements ReservationRequestRepo
 	@Override
 	public void addReservationRequest(ReservationRequest reservationRequest) {
 		Reservation reservation = ractoryReservation.createReservation(reservationRequest);
-		this.reservationRepositoryInSql.addReservation(reservation);
+		ReservationEntity reservationEntity = reservationBuilder.convertReservationToReservationEntity(reservation);
+		reservationDao.save(reservationEntity);
 	}
 
 	@Override
