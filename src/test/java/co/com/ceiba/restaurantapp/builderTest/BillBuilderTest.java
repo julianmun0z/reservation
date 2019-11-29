@@ -109,6 +109,7 @@ public class BillBuilderTest {
 		assertEquals(expedtedId, bill.getIdBill());
 		assertEquals(expedtedDiscountDay, bill.getDiscpuntForDays());
 		assertEquals(expedtedDiscountPeople, bill.getDiscountForPeople());
+		assertEquals(DECOR, bill.getReservation().isDecor());
 	}
 
 }
