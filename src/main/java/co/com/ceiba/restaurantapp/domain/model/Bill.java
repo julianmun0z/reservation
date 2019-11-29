@@ -112,7 +112,7 @@ public class Bill {
 	}
 
 	public float daysWithRestriction(float price) {
-		float restriction = INITIALIZING_VALUE;
+		float restriction;
 		int day = reservation.getReservationDate().get(Calendar.DAY_OF_WEEK);
 		long differenceBetweenDates = differenceBetweenCurrentDateAndReservationDate();
 		if ((day == FRIDAY || day == SATURDAY) && (differenceBetweenDates <= MAXIMUM_FOR_DAYS_FOR_RESTRICTION)) {
@@ -124,7 +124,7 @@ public class Bill {
 	}
 
 	public long differenceBetweenCurrentDateAndReservationDate() {
-		long daysDifference = INITIALIZING_VALUE;
+		long daysDifference;
 		Date fechaEntrada = reservation.getReservationDate().getTime();
 		Date fechaHoy = reservation.getCurrentDate().getTime();
 		daysDifference = (fechaEntrada.getTime() - fechaHoy.getTime()) / MILLISECOND;
