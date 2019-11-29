@@ -15,7 +15,6 @@ import co.com.ceiba.restaurantapp.domain.model.Bill;
 import co.com.ceiba.restaurantapp.domain.model.Client;
 import co.com.ceiba.restaurantapp.domain.model.Reservation;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.builders.BillBuilder;
-import co.com.ceiba.restaurantapp.infrastructure.adapter.builders.ReservationBuilder;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.entities.BillEntity;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.entities.ClientEntity;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.entities.ReservationEntity;
