@@ -35,8 +35,8 @@ public class ReservationRepositoryInSql implements ReservationRepository {
 	@Override
 	public Reservation getReservationById(int id) {
 		ReservationEntity reservationEntity = reservationDao.findById(id);
-		Reservation reservation = reservationBuilder.convertReservationEntityToReservation(reservationEntity);
-		return reservation;
+		return reservationBuilder.convertReservationEntityToReservation(reservationEntity);
+		
 	}
 
 	@Override

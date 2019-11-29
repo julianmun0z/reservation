@@ -35,8 +35,8 @@ public class ClientRepositoryInSql implements ClientRepository {
 	@Override
 	public Client getClientById(int id) {
 		ClientEntity clientEntity = clientDao.findById(id);
-		Client client = clientBuilder.convertClientEntityToClient(clientEntity);
-		return client;
+		return  clientBuilder.convertClientEntityToClient(clientEntity);
+		
 	}
 
 	@Override
