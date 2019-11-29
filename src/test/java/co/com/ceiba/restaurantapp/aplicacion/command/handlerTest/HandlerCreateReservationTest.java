@@ -1,4 +1,4 @@
-package co.com.ceiba.restaurantapp.aplicacion.command.factoryTest;
+package co.com.ceiba.restaurantapp.aplicacion.command.handlerTest;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
@@ -19,9 +19,11 @@ import co.com.ceiba.restaurantapp.domain.model.Reservation;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.builders.BillBuilder;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.entities.ClientEntity;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.entities.ReservationEntity;
+import co.com.ceiba.restaurantapp.aplicacion.command.handler.HandlerCreateReservation;
 
-public class FactoryReservationTest {
+public class HandlerCreateReservationTest {
 
+	
 	@Mock
 	private BillBuilder billBuilder;
 
@@ -41,6 +43,9 @@ public class FactoryReservationTest {
 
 	@Mock
 	private ReservationEntity reservationEntity;
+	
+	@Mock
+	private HandlerCreateReservation  handlerCreateReservation;
 	
 	@Mock
 	private FactoryReservation factoryReservation;
@@ -64,8 +69,8 @@ public class FactoryReservationTest {
 
 	
 	@Test
-	public void createReservation() {
-		//arrange 
+	public void executeTest() {
+		//arrange
 		when(reservationRequest.getId()).thenReturn(ID_RESERVATION);
 		when(reservationRequest.getReservationDate()).thenReturn(DATE_FOR_DIVISION_DTO);
 		when(reservationRequest.getNumberPeople()).thenReturn(NUMBER_PEOPLE);
@@ -74,23 +79,22 @@ public class FactoryReservationTest {
 		when(reservationRequest.getLastName()).thenReturn(LASTNAME);
 		when(reservationRequest.getEmail()).thenReturn(EMAIL);
 		when(reservationRequest.getPhoneNumber()).thenReturn(PHONENUMBER);
+		
 		Calendar expectedDate = DATE_FOR_DIVISION_DTO; 
 		boolean expectedDecor = DECOR;
 		int expectedPeople = NUMBER_PEOPLE;
 		String expectedName = FIRSTNAME;
-
-
-		//act
 		
-		Reservation resultreReservation = factoryReservation.createReservation(reservationRequest);
+		//act
+		handlerCreateReservation.execute(reservationRequest);
+		
 		//assert
-		assertEquals(expectedDate, resultreReservation.getReservationDate());
-		assertEquals(expectedDecor, resultreReservation.isDecor());
-		assertEquals(expectedPeople, resultreReservation.getNumberPeople());
-		assertEquals(expectedName, resultreReservation.getClient().getFirstName());
-
-
-
+		assertEquals(expectedName, reservationRequest.getFirstName());
+		assertEquals(expectedDate, reservationRequest.getReservationDate());
+		assertEquals(expectedDecor, reservationRequest.isDecor());
+		assertEquals(expectedPeople, reservationRequest.getNumberPeople());
+		
+		
 	}
 	
 }

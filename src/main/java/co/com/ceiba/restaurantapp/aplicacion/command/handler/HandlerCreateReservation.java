@@ -15,16 +15,12 @@ public class HandlerCreateReservation {
 	private final FactoryReservation factoryReservation;
 	private final ReservationRepository reservationRepository;
 
-	
-
 	public HandlerCreateReservation(BillRequetSerivice billRequetSerivice, FactoryReservation factoryReservation,
 			ReservationRepository reservationRepository) {
 		this.billRequetSerivice = billRequetSerivice;
 		this.factoryReservation = factoryReservation;
 		this.reservationRepository = reservationRepository;
 	}
-
-
 
 	public void execute(ReservationRequest reservationRequest) {
 		Reservation reservation = this.factoryReservation.createReservation(reservationRequest);
