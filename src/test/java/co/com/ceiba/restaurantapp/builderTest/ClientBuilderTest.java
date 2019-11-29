@@ -67,12 +67,14 @@ public class ClientBuilderTest {
 		String expectedFiLastName = LASTNAME;
 		String expectedEmail = EMAIL;
 		String expectedPhoneNumber = PHONENUMBER;
+		int expectedId = 0;
 
 		// act
 
 		ClientEntity resultClientEntity = clientBuilder.convertClientToRClientEntity(client);
 
 		// assert
+		assertEquals(expectedId, resultClientEntity.getClientId(),0);
 		assertEquals(expectedFirstname, resultClientEntity.getFirstName());
 		assertEquals(expectedFiLastName, resultClientEntity.getLastName());
 		assertEquals(expectedEmail, resultClientEntity.getEmail());
