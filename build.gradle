@@ -8,6 +8,7 @@ buildscript {
 	  dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.6.RELEASE")
     }
+    
 }
 
 
@@ -42,8 +43,3 @@ dependencies {
 		testCompile group: 'org.mockito', name: 'mockito-core', version: '3.0.0'
 }
 
-sonarqube {
-    properties {
-        property 'sonar.exclusions', "**/ceiba/restaurantapp/aplicacion/command/handler/**"
-    }
-}
