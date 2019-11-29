@@ -23,10 +23,12 @@ public class ReservationTest {
 	private static final String LA_FECHA_ES_OBLIGATORIA = "LA FECHA ES OBLIGATORIA";
 	private static final String EL_NUMERO_DE_PERSONAS_PARA_LA_RESERVA_ES_OBLIGATORIO = "EL NUMERO DE PERSONAS PARA LA RESERVA ES OBLIGATORIO";
 
+private static final int ID_RESERVATION= 1;
+	
 	@Test
 	public void createReservationTest() {
 		// arrange
-		ReservationTestDataBuilder reservationTestDataBuilder = new ReservationTestDataBuilder()
+		ReservationTestDataBuilder reservationTestDataBuilder = new ReservationTestDataBuilder().whitIdReservation(ID_RESERVATION)
 				.whitReservation(RESERVATIONDATE).whiteDecor(DECOR).whitNumberPeople(NUMBERPEOPLE);
 
 		// act
