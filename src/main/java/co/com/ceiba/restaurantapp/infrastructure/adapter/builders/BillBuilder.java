@@ -16,7 +16,7 @@ public class BillBuilder {
 	ReservationBuilder reservationBuilder;
 
 	@Autowired
-	ClientBuilder ClientBuilder;
+	ClientBuilder clientBuilder; 
 
 	public BillEntity converBillToBillEntity(Bill bill) {
 
@@ -37,8 +37,8 @@ public class BillBuilder {
 				reservationEntity.getReservationDate(), reservationEntity.getNumberPeople(),
 				reservationEntity.isDecor(), client);
 
-		Bill bill = new Bill(reservations);
-		return bill;
+		return new Bill(reservations);
+		
 	}
 
 }
