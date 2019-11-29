@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 import org.junit.Before;
@@ -12,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import co.com.ceiba.restaurantapp.aplicacion.command.factory.FactoryBill;
+import co.com.ceiba.restaurantapp.aplicacion.command.factory.FactoryReservation;
 import co.com.ceiba.restaurantapp.aplicacion.dto.ReservationRequest;
 import co.com.ceiba.restaurantapp.domain.model.Bill;
 import co.com.ceiba.restaurantapp.domain.model.Client;
@@ -20,12 +22,13 @@ import co.com.ceiba.restaurantapp.infrastructure.adapter.builders.BillBuilder;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.entities.ClientEntity;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.entities.ReservationEntity;
 
-public class FactoryBillTest {
+public class FactoryReservationTest {
 
 	@Mock
 	private BillBuilder billBuilder;
 
-	
+	@Mock
+	private Bill bill;
 
 	@Mock
 	private Reservation reservation;
@@ -42,12 +45,12 @@ public class FactoryBillTest {
 	private ReservationEntity reservationEntity;
 	
 	@Mock
-	private FactoryBill factoryBill;
+	private FactoryReservation factoryReservation;
 
 	@Before
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
-		factoryBill = new FactoryBill();
+		factoryReservation = new FactoryReservation();
 
 	}
 	
@@ -65,7 +68,7 @@ public class FactoryBillTest {
 	private static final int DISCOUNT_PEOPLE = 36120;
 	
 	@Test
-	public void crearBillTest() {
+	public void createReservation() {
 		//arrange 
 		when(reservationRequest.getId()).thenReturn(ID_RESERVATION);
 		when(reservationRequest.getReservationDate()).thenReturn(DATE_FOR_DIVISION_DTO);
@@ -75,18 +78,23 @@ public class FactoryBillTest {
 		when(reservationRequest.getLastName()).thenReturn(LASTNAME);
 		when(reservationRequest.getEmail()).thenReturn(EMAIL);
 		when(reservationRequest.getPhoneNumber()).thenReturn(PHONENUMBER);
-		float expectedPrice = EXPECTED_PRICE; 
-		int expectedDiscountDay = DISCOUNT_DAYS;
-		int expectedDiscountPeople = DISCOUNT_PEOPLE;
+		Calendar expectedDate = DATE_FOR_DIVISION_DTO; 
+		boolean expectedDecor = DECOR;
+		int expectedPeople = NUMBER_PEOPLE;
+		String expectedName = FIRSTNAME;
 
 
 		//act
 		
-		Bill resultbill = factoryBill.crearBill(reservationRequest);
+		Reservation resultreReservation = factoryReservation.createReservation(reservationRequest);
 		//assert
-		assertEquals(expectedPrice, resultbill.getPrice(),0);
-		assertEquals(expectedDiscountDay, resultbill.getDiscpuntForDays());
-		assertEquals(expectedDiscountPeople, resultbill.getDiscountForPeople());
+		assertEquals(expectedDate, resultreReservation.getReservationDate());
+		assertEquals(expectedDecor, resultreReservation.isDecor());
+		assertEquals(expectedPeople, resultreReservation.getNumberPeople());
+		assertEquals(expectedName, resultreReservation.getClient().getFirstName());
+
+
 
 	}
+	
 }
