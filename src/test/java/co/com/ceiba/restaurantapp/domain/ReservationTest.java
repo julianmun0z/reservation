@@ -23,7 +23,7 @@ public class ReservationTest {
 	private static final String LA_FECHA_ES_OBLIGATORIA = "LA FECHA ES OBLIGATORIA";
 	private static final String EL_NUMERO_DE_PERSONAS_PARA_LA_RESERVA_ES_OBLIGATORIO = "EL NUMERO DE PERSONAS PARA LA RESERVA ES OBLIGATORIO";
 
-private static final int ID_RESERVATION= 1;
+private static final int ID_RESERVATION= 5;
 	
 	@Test
 	public void createReservationTest() {
@@ -35,6 +35,7 @@ private static final int ID_RESERVATION= 1;
 		Reservation reservation = reservationTestDataBuilder.build();
 
 		// assert
+		assertEquals(ID_RESERVATION, reservation.getIdReservation());
 		assertEquals(RESERVATIONDATE, reservation.getReservationDate());
 		assertEquals(DECOR, reservation.isDecor());
 		assertEquals(NUMBERPEOPLE, reservation.getNumberPeople());
