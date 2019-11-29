@@ -78,8 +78,7 @@ public class Bill {
 	}
 
 	public float getValueForPerson() {
-		float priceForPerson = INITIALIZING_VALUE;
-		priceForPerson = VALUE_FOR_PERSON * this.reservation.getNumberPeople();
+		 float	priceForPerson = VALUE_FOR_PERSON * this.reservation.getNumberPeople();
 		return priceForPerson;
 
 	}
