@@ -44,7 +44,7 @@ public class ReservationRequestControllerTest {
 			throw new RuntimeException(e);
 		}
 	}
-
+ 
 	@Test
 	public void getAllReservation() throws Exception {
 		mvc.perform(MockMvcRequestBuilders.get("/reservationrequest").accept(MediaType.APPLICATION_JSON)).andDo(print())
