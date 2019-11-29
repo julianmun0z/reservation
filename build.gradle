@@ -43,7 +43,7 @@ dependencies {
 }
 
 sonarqube {
-    properties {co.com.ceiba.restaurantapp.aplicacion.command.handler
+    properties {
         property 'sonar.exclusions', "**/ceiba/restaurantapp/aplicacion/command/handler/**"
     }
 }
