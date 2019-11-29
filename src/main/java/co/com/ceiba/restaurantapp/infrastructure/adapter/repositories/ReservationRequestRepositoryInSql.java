@@ -64,13 +64,6 @@ public class ReservationRequestRepositoryInSql implements ReservationRequestRepo
 	}
 
 	@Override
-	public void editReservationRequest(ReservationRequest reservationRequest) {
-		Reservation reservation = ractoryReservation.createReservation(reservationRequest);
-		ReservationEntity reservationEntity = reservationBuilder.convertReservationToReservationEntity(reservation);
-		reservationDao.save(reservationEntity);
-	}
-
-	@Override
 	public ReservationRequest deleteReservationRequest(int id) {
 		ReservationEntity reservationEntity = reservationDao.findById(id);
 		Reservation reservation = reservationBuilder.convertReservationEntityToReservation(reservationEntity);
