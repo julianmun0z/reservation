@@ -15,7 +15,7 @@ public class ReservationBuilder {
 	BillBuilder billBuilder;
 
 	@Autowired
-	ClientBuilder ClientBuilder;
+	ClientBuilder clientBuilder;
 
 	public ReservationEntity convertReservationToReservationEntity(Reservation reservation) {
 
@@ -35,11 +35,9 @@ public class ReservationBuilder {
 
 		Client client = new ClientBuilder().convertClientEntityToClient(reservationEntity.getClientEntity());
 
-		Reservation reservation = new Reservation(reservationEntity.getIdReservation(),
-				reservationEntity.getReservationDate(), reservationEntity.getNumberPeople(),
-				reservationEntity.isDecor(), client);
+		return new Reservation(reservationEntity.getIdReservation(), reservationEntity.getReservationDate(),
+				reservationEntity.getNumberPeople(), reservationEntity.isDecor(), client);
 
-		return reservation;
 	}
 
 }

@@ -21,10 +21,9 @@ public class ClientBuilder {
 
 	public Client convertClientEntityToClient(ClientEntity clientEntity) {
 
-		Client client = new Client(clientEntity.getClientId(), clientEntity.getFirstName(), clientEntity.getLastName(),
+		return new Client(clientEntity.getClientId(), clientEntity.getFirstName(), clientEntity.getLastName(),
 				clientEntity.getEmail(), clientEntity.getPhoneNumber());
 
-		return client;
 	}
 
 }
