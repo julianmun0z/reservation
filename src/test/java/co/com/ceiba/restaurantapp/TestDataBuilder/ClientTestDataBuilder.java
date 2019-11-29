@@ -8,19 +8,27 @@ public class ClientTestDataBuilder {
 	private static final String LASTNAME = "gomez";
 	private static final String EMAIL = "J@J.COM";
 	private static final String PHONENUMBER = "123456789";
-
+	private static final int ID_CLIENT = 1;
+	
+	private int idClient;
 	private String firstName;
 	private String lastName;
 	private String Email;
 	private String phoneNumber;
 
 	public ClientTestDataBuilder() {
+		this.idClient = ID_CLIENT;
 		this.firstName = FIRSTNAME;
 		this.lastName = LASTNAME;
 		this.Email = EMAIL;
 		this.phoneNumber = PHONENUMBER;
 	}
 
+	public ClientTestDataBuilder whitIdClient(int idClient) {
+		this.idClient = idClient;
+		return this;
+	}
+	
 	public ClientTestDataBuilder whitFirstName(String firstName) {
 		this.firstName = firstName;
 		return this;
@@ -44,7 +52,7 @@ public class ClientTestDataBuilder {
 	}
 
 	public Client build() {
-		return new Client(0, firstName, lastName, Email, phoneNumber);
+		return new Client(idClient, firstName, lastName, Email, phoneNumber);
 	}
 
 }

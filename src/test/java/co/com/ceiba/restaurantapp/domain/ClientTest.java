@@ -10,6 +10,7 @@ import co.com.ceiba.restaurantapp.domain.model.Client;
 
 public class ClientTest {
 
+	private static final int ID_CLIENT = 1;
 	private static final String FIRSTNAME = "juan";
 	private static final String LASTNAME = "gomez";
 	private static final String EMAIL = "J@J.COM";
@@ -31,13 +32,14 @@ public class ClientTest {
 	public void createClientTest() {
 
 		// arrange
-		ClientTestDataBuilder clientDtoTestBuilder = new ClientTestDataBuilder().whitFirstName(FIRSTNAME)
+		ClientTestDataBuilder clientDtoTestBuilder = new ClientTestDataBuilder().whitIdClient(ID_CLIENT).whitFirstName(FIRSTNAME)
 				.whitLastName(LASTNAME).whiteEmail(EMAIL).whitePhoneNumber(PHONENUMBER);
 
 		// act
 		Client client = clientDtoTestBuilder.build();
 
 		// assert
+		assertEquals(ID_CLIENT, client.getIdClient());
 		assertEquals(FIRSTNAME, client.getFirstName());
 		assertEquals(LASTNAME, client.getLastName());
 		assertEquals(EMAIL, client.getEmail());
