@@ -1,6 +1,7 @@
 package co.com.ceiba.restaurantapp.aplicacion.command.handlerTest;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 import static org.mockito.Mockito.when;
 
 import java.util.Calendar;
@@ -84,15 +85,23 @@ public class HandlerCreateReservationTest {
 		boolean expectedDecor = DECOR;
 		int expectedPeople = NUMBER_PEOPLE;
 		String expectedName = FIRSTNAME;
+		String messageResult="";
+		
 		
 		//act
-		handlerCreateReservation.execute(reservationRequest);
+		
+		
+		try {
+			handlerCreateReservation.execute(reservationRequest);
+		} catch (Exception e) {
+			messageResult = e.getMessage();
+		}
 		
 		//assert
-		assertEquals(expectedName, reservationRequest.getFirstName());
-		assertEquals(expectedDate, reservationRequest.getReservationDate());
-		assertEquals(expectedDecor, reservationRequest.isDecor());
-		assertEquals(expectedPeople, reservationRequest.getNumberPeople());
+		assertEquals("", messageResult);
+//		assertEquals(expectedDate, reservationRequest.getReservationDate());
+//		assertEquals(expectedDecor, reservationRequest.isDecor());
+//		assertEquals(expectedPeople, reservationRequest.getNumberPeople());
 		
 		
 	}
