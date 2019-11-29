@@ -3,6 +3,13 @@ package co.com.ceiba.restaurantapp.domain.strategies;
 import co.com.ceiba.restaurantapp.domain.exception.ExceptionsForRstrictions;
 
 public class ArgumentsValidator {
+	
+	String numeroloco;
+	
+
+	public ArgumentsValidator(String numeroloco) {
+		this.numeroloco = numeroloco;
+	}
 
 	public static void restrictionForNull(Object valor, String mensaje) {
 		if (valor == null) {
