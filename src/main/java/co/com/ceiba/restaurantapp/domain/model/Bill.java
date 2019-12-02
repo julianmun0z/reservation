@@ -78,9 +78,10 @@ public class Bill {
 	}
 
 	public float getValueForPerson() {
+		@SuppressWarnings("unused")
 		float priceForPerson;
-		priceForPerson = VALUE_FOR_PERSON * this.reservation.getNumberPeople();
-		return priceForPerson;
+		return	priceForPerson = VALUE_FOR_PERSON * this.reservation.getNumberPeople();
+		 
 
 	}
 
