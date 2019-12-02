@@ -12,6 +12,7 @@ public class ReservationTestDataBuilder {
 	private static final boolean DECOR = true;
 	private static final int ID_RESERVATION= 1;
 	
+	@SuppressWarnings("unused")
 	private int idReservation;
 	private Calendar reservationDate;
 	private int numberPeople;
