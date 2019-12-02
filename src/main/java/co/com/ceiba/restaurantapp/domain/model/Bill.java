@@ -9,7 +9,7 @@ public class Bill {
 
 	private static final float FIXED_PRICE = 60000;
 	private static final int INITIALIZING_VALUE = 0;
-	private static final int VALUE_FOR_PERSON = 50000;
+	private static final float VALUE_FOR_PERSON = 50000;
 	private static final int MINIMUM_OF_PEOPLE_FOR_DISCOUNT = 5;
 	private static final int PERCENT_FOR_PEOPLE = 15;
 	private static final int DISCOUNT_SPLITTER = 100;
@@ -77,8 +77,8 @@ public class Bill {
 		return newPrice;
 	}
 
-	public int getValueForPerson() {
-		int priceForPerson;
+	public float getValueForPerson() {
+		float priceForPerson;
 		priceForPerson = VALUE_FOR_PERSON * this.reservation.getNumberPeople();
 		return priceForPerson;
 
