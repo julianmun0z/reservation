@@ -77,11 +77,10 @@ public class Bill {
 		return newPrice;
 	}
 
-	public float getValueForPerson() {
-		@SuppressWarnings("unused")
-		float priceForPerson;
-		return	priceForPerson = VALUE_FOR_PERSON * this.reservation.getNumberPeople();
-		 
+	public int getValueForPerson() {
+		int priceForPerson;
+		priceForPerson = VALUE_FOR_PERSON * this.reservation.getNumberPeople();
+		return priceForPerson;
 
 	}
 
