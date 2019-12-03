@@ -50,5 +50,4 @@ public class Client {
 		return idClient;
 	}
 
-
 }

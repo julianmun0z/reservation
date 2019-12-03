@@ -1,4 +1,4 @@
-package co.com.ceiba.restaurantapp.domain;
+package co.com.ceiba.restaurantapp.aplicacion.dtoTest;
 
 import static org.junit.Assert.assertEquals;
 

@@ -5,7 +5,7 @@ import co.com.ceiba.restaurantapp.domain.repositories.ReservationRequestReposito
 
 public class HandlerGetForIdReservation {
 
-	private ReservationRequestRepository reservationRequestRepository; 
+	private ReservationRequestRepository reservationRequestRepository;
 
 	public HandlerGetForIdReservation(
 			co.com.ceiba.restaurantapp.domain.repositories.ReservationRequestRepository reservationRequestRepository) {

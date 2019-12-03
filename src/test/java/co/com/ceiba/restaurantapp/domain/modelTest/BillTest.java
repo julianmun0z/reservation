@@ -1,4 +1,4 @@
-package co.com.ceiba.restaurantapp.domain;
+package co.com.ceiba.restaurantapp.domain.modelTest;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;

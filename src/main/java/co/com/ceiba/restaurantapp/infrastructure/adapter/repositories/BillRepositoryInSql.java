@@ -23,7 +23,7 @@ public class BillRepositoryInSql implements BillRepository {
 	@Override
 	public Bill getBillById(int id) {
 		ReservationEntity reservationEntity = this.reservationDao.findById(id);
-		return new BillBuilder().convertBillEntityToBillWhitReservation(reservationEntity); 
+		return new BillBuilder().convertBillEntityToBillWhitReservation(reservationEntity);
 	}
 
 	@Override

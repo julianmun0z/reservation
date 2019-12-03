@@ -78,7 +78,5 @@ public class BeanServices {
 	public HandlerGetForIdBill handlerGetForIdBill() {
 		return new HandlerGetForIdBill(billRepository);
 	}
-	
-
 
 }
