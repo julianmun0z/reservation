@@ -22,23 +22,20 @@ import co.com.ceiba.restaurantapp.aplicacion.dto.ReservationRequest;
 import co.com.ceiba.restaurantapp.infrastructure.controllers.ReservationRequestController;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(value=ReservationRequestController.class)
+@WebMvcTest(value = ReservationRequestController.class)
 public class ReservationRequestControllerTest {
 
 	@Autowired
 	private MockMvc mvc;
 
-
 	@MockBean
 	private ReservationRequestController reservationRequestController;
-	
+
 	ReservationRequest reservationRequest = new ReservationRequestTestDataBuilder().build();
 
 	@Test
 	public void createReservationAPI() throws Exception {
 
-		
-		
 		mvc.perform(MockMvcRequestBuilders.post("/reservationrequest").content(asJsonString(reservationRequest))
 				.contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
 	}
@@ -55,14 +52,8 @@ public class ReservationRequestControllerTest {
 	public void getAllReservation() throws Exception {
 
 		asJsonString(reservationRequest);
-		mvc.perform(MockMvcRequestBuilders.get("/reservationrequest")
-				.accept(MediaType.APPLICATION_JSON)).andDo(print())
-				.andDo(print()).andExpect(status().isOk())
-				.andExpect(MockMvcResultMatchers.jsonPath("$").exists());
-//				.andExpect(MockMvcResultMatchers.jsonPath("$.reservation.id", is(89)));
-//				.andExpect(content().string(String.valueOf(reservationRequest.getFirstName())))
-	//	 .andExpect(MockMvcResultMatchers.jsonPath("$.reservationrequest").exists());
-
+		mvc.perform(MockMvcRequestBuilders.get("/reservationrequest").accept(MediaType.APPLICATION_JSON)).andDo(print())
+				.andDo(print()).andExpect(status().isOk()).andExpect(MockMvcResultMatchers.jsonPath("$").exists());
 	}
 
 	@Test

@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 import co.com.ceiba.restaurantapp.aplicacion.command.factory.FactoryBill;
 import co.com.ceiba.restaurantapp.aplicacion.command.factory.FactoryReservation;
+import co.com.ceiba.restaurantapp.aplicacion.command.handler.HandlerCreateReservation;
 import co.com.ceiba.restaurantapp.aplicacion.command.handler.HandlerDeleteReservation;
 import co.com.ceiba.restaurantapp.aplicacion.command.handler.HandlerUpdateReservation;
 import co.com.ceiba.restaurantapp.aplicacion.query.HandlerGetForIdBill;
@@ -18,6 +19,7 @@ import co.com.ceiba.restaurantapp.domain.services.BillRequetSerivice;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.dao.BillDao;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.dao.ReservationDao;
 import co.com.ceiba.restaurantapp.infrastructure.adapter.repositories.BillRepositoryInSql;
+import co.com.ceiba.restaurantapp.infrastructure.controllers.ReservationRequestController;
 
 @Configuration
 public class BeanServices {

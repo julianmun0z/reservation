@@ -25,11 +25,9 @@ public class FactoryBillTest {
 	@Mock
 	private BillBuilder billBuilder;
 
-	
-
 	@Mock
 	private Reservation reservation;
-	
+
 	@Mock
 	private ReservationRequest reservationRequest;
 
@@ -40,7 +38,7 @@ public class FactoryBillTest {
 
 	@Mock
 	private ReservationEntity reservationEntity;
-	
+
 	@Mock
 	private FactoryBill factoryBill;
 
@@ -50,8 +48,7 @@ public class FactoryBillTest {
 		factoryBill = new FactoryBill();
 
 	}
-	
-	
+
 	private static final String FIRSTNAME = "juan";
 	private static final String LASTNAME = "gomez";
 	private static final String EMAIL = "J@J.COM";
@@ -63,10 +60,10 @@ public class FactoryBillTest {
 	private static final float EXPECTED_PRICE = 240800;
 	private static final int DISCOUNT_DAYS = 48160;
 	private static final int DISCOUNT_PEOPLE = 36120;
-	
+
 	@Test
 	public void crearBillTest() {
-		//arrange 
+		// arrange
 		when(reservationRequest.getId()).thenReturn(ID_RESERVATION);
 		when(reservationRequest.getReservationDate()).thenReturn(DATE_FOR_DIVISION_DTO);
 		when(reservationRequest.getNumberPeople()).thenReturn(NUMBER_PEOPLE);
@@ -75,16 +72,15 @@ public class FactoryBillTest {
 		when(reservationRequest.getLastName()).thenReturn(LASTNAME);
 		when(reservationRequest.getEmail()).thenReturn(EMAIL);
 		when(reservationRequest.getPhoneNumber()).thenReturn(PHONENUMBER);
-		float expectedPrice = EXPECTED_PRICE; 
+		float expectedPrice = EXPECTED_PRICE;
 		int expectedDiscountDay = DISCOUNT_DAYS;
 		int expectedDiscountPeople = DISCOUNT_PEOPLE;
 
+		// act
 
-		//act
-		
 		Bill resultbill = factoryBill.crearBill(reservationRequest);
-		//assert
-		assertEquals(expectedPrice, resultbill.getPrice(),0);
+		// assert
+		assertEquals(expectedPrice, resultbill.getPrice(), 0);
 		assertEquals(expectedDiscountDay, resultbill.getDiscpuntForDays());
 		assertEquals(expectedDiscountPeople, resultbill.getDiscountForPeople());
 
